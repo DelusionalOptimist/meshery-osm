@@ -2,7 +2,8 @@ name: Meshery Open Service Mesh Pattern Components Generator
 on:
   push:
     branches:
-      - "master"
+      #- "master"
+      - "new-branch"
 jobs:
   check_osm_version:
     name: Check OSM Version
@@ -36,8 +37,10 @@ jobs:
         uses: actions/checkout@master
         with:
           fetch-depth: 1
-          token: ${{ secrets.GH_ACCESS_TOKEN }}
-          ref: "master"
+          token: ${{ secrets.PAT }}
+          ref: "new-branch"
+            #token: ${{ secrets.GH_ACCESS_TOKEN }}
+            #ref: "master"
       - name: Get OSM manifests
         run: |
           mkdir ./osm-crds
@@ -86,4 +89,4 @@ jobs:
           commit_author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           commit_options: "--signoff"
           commit_message: "[Patterns] Pattern components generated from latest osm manifests"
-          branch: master
+          branch: new-branch
