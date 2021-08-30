@@ -32,7 +32,7 @@ func NewKubeconfigBuilder(provider string) (config.Handler, error) {
 
 	opts := configprovider.Options{}
 
-	// Config environment
+	// Config  environment
 	opts.ProviderConfig = KubeConfigDefaults
 
 	// Config provider
